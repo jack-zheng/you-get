@@ -2,7 +2,9 @@
 import os, sys
 
 _srcdir = '%s/src/' % os.path.dirname(os.path.realpath(__file__))
+print('_srcdir: %s' % _srcdir)
 _filepath = os.path.dirname(sys.argv[0])
+print('_filepath: %s' % _filepath)
 sys.path.insert(1, os.path.join(_filepath, _srcdir))
 
 if sys.version_info[0] == 3:
