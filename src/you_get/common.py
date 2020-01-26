@@ -20,8 +20,9 @@ from .util import log, term
 from .util.git import get_version
 from .util.strings import get_filename, unescape_html
 from . import json_output as json_output_
+print('pring debug in common after import...')
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer,encoding='utf8')
-
+print('pring debug in common after assign stdout...')
 SITES = {
     '163'              : 'netease',
     '56'               : 'w56',
@@ -958,6 +959,7 @@ def download_urls(
     output_filename = get_output_filename(urls, title, ext, output_dir, merge)
     output_filepath = os.path.join(output_dir, output_filename)
 
+    print('-----> start print bar')
     if total_size:
         if not force and os.path.exists(output_filepath) and not auto_rename\
                 and (os.path.getsize(output_filepath) >= total_size * 0.9\
@@ -981,6 +983,7 @@ def download_urls(
             headers=headers, **kwargs
         )
         bar.done()
+        print('-----> end print bar')
     else:
         parts = []
         print('Downloading %s ...' % tr(output_filename))
@@ -996,6 +999,7 @@ def download_urls(
                 headers=headers, **kwargs
             )
         bar.done()
+        print('-----> end print bar')
 
         if not merge:
             print()
@@ -1429,7 +1433,7 @@ def script_main(download, download_playlist, **kwargs):
                 version
             )
         )
-
+    print('Print debug...')
     parser = argparse.ArgumentParser(
         prog='you-get',
         usage='you-get [OPTION]... URL...',
@@ -1543,14 +1547,14 @@ def script_main(download, download_playlist, **kwargs):
         '-s', '--socks-proxy', metavar='HOST:PORT',
         help='Use an SOCKS5 proxy for downloading'
     )
-
+    
     download_grp.add_argument('--stream', help=argparse.SUPPRESS)
     download_grp.add_argument('--itag', help=argparse.SUPPRESS)
 
     parser.add_argument('URL', nargs='*', help=argparse.SUPPRESS)
 
     args = parser.parse_args()
-
+    print('print debug 02...')
     if args.help:
         print_version()
         parser.print_help()
@@ -1756,4 +1760,6 @@ def any_download_playlist(url, **kwargs):
 
 
 def main(**kwargs):
+    # take care, any_download and any_download_playlist is function name !!
+    print('pring debug in common main method...')
     script_main(any_download, any_download_playlist, **kwargs)

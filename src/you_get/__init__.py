@@ -6,7 +6,7 @@ import sys
 if sys.version_info[0] == 3:
     #from .extractor import Extractor, VideoExtractor
     #from .util import log
-
+    print('print debug in __init__ file...')
     from .__main__ import *
 
     #from .common import *

@@ -5,7 +5,7 @@ print('file dir: %s' % os.path.dirname(os.path.realpath(__file__)))
 print('file name: %s' % os.path.dirname(sys.argv[0]))
 print(sys.argv, len(sys.argv))
 print(sys.argv[0])
-print(sys.argv[1])
+
 '''
 Console output:
 
@@ -13,3 +13,10 @@ version info: sys.version_info(major=3, minor=7, micro=5, releaselevel='final', 
 file dir: /Users/i306454/gitStore/you-get/build_in_func_test.py
 file name: 
 '''
+
+
+def multi_args(**kwargs):
+    print(kwargs)
+    
+kws = {'first':'jack01', 'second':'jack02', 'third':'jack03'}
+multi_args(**kws)

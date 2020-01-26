@@ -7,6 +7,8 @@ import sys
 from .version import script_name, __version__
 from .util import git, log
 
+print('print debug __main__ after import...')
+
 _options = [
     'help',
     'version',
@@ -88,7 +90,9 @@ def main(**kwargs):
     """Main entry point.
     you-get (legacy)
     """
+    print('pring debug in __main__ in [main] method...')
     from .common import main
+    print('pring debug in __main__ file...')
     main(**kwargs)
 
 if __name__ == '__main__':
